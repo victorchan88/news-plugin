@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "QuickNews Plugin",
+    "name_for_model": "quicknews",
+    "description_for_human": "Plugin for fetching news based on topic and date. You can specify the topic and date range to get the most relevant news",
+    "description_for_model": "Plugin for fetching news based on topic and date. You can specify the topic and date range to get the most relevant news. Example usage: 'quicknews news about AI from 2023-05-01 to 2023-05-15'.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://news-plugin--victorchan88.repl.co/.well-known/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://news-plugin--victorchan88.repl.co/logo.png",
+    "contact_email": "support@quicknews.com",
+    "legal_info_url": "http://www.quicknews.com/legal"
+}

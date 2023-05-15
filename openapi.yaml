@@ -1,0 +1,72 @@
+openapi: 3.0.1
+info:
+  title: QuickNews Plugin
+  description: A plugin that fetches news based on topic and date from NewsAPI.
+  version: 'v1'
+servers:
+  - url: https://news-plugin--victorchan88.repl.co
+paths:
+  /news:
+    get:
+      operationId: fetchNews
+      summary: Get news on a specific topic and date range
+      parameters:
+        - name: topic
+          in: query
+          description: The news topic to search for
+          required: true
+          schema:
+            type: string
+        - name: date_from
+          in: query
+          description: The start date for the news search (format YYYY-MM-DD)
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: date_to
+          in: query
+          description: The end date for the news search (format YYYY-MM-DD)
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fetchNewsResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  schemas:
+    fetchNewsResponse:
+      type: object
+      properties:
+        articles:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              url:
+                type: string
+              publishedAt:
+                type: string
+                format: date-time
+          description: The news articles fetched
+    errorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: An error message describing the issue
